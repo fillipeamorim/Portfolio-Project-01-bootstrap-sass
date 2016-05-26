@@ -1,1 +1,1 @@
-# Ficticious layout created for temporary academic portfolio
+# Ficticious layout created for temporary portfolio

@@ -1,7 +1,7 @@
 {
   "name": "port-proj-01-bootstrap-sass",
   "version": "1.0.0",
-  "description": "Initial project for sites in bootstrap",
+  "description": "Initial project for sites in bootstrap and sass",
   "ignore": [
     "**/.*",
     "node_modules",
