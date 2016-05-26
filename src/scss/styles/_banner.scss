@@ -1,0 +1,83 @@
+.banner-inner {
+  .banner-content { @include make-row(); }
+  .banner-lead {
+    font:400 $font-size-h3 "Noticia Text", sans-serif;
+    line-height: $line-height-base;
+    margin-top: 0;
+    margin-bottom: 60px;
+    padding: 0 20px;
+    @include breakpoint(sm) {
+      font-size: $font-size-h2 - 2;
+      margin-top: 5px;
+      margin-bottom: 50px;
+    }
+  }
+  .list-services { margin:0; padding:0; list-style-type: none; }
+  .service {
+    @include make-sm-column(4);
+    margin-bottom: 50px;
+    h2 {
+      font-size: $font-size-h3 - 5;
+      font-weight: 400;
+      position: relative;
+      & > :before {
+        display: block;
+        content: "";
+        width:100%;
+        height: 140px;
+      }
+      &.globe  { background: url('img/planet.png') no-repeat center top; }
+      &.coins  { background: url('img/coins.png') no-repeat center top; }
+      &.pocket { background: url('img/pocket.png') no-repeat center top; }
+      span{ font-size: $font-size-small - 1; }
+    }
+    p {
+      color: $gray-light;
+      font-size: $font-size-base;
+      font-weight: 300;
+      line-height: $line-height-base + .3;
+      margin-bottom: 20px;
+      padding: 0 30px;
+      @include breakpoint(sm) { margin-bottom: 50px; }
+    }
+    @include breakpoint(sm) {
+      position: relative;
+      margin-bottom: 0;
+      &:after {
+        display: block;
+        position: absolute;
+        content: "";
+        width:1px;
+        height: 145px;
+        background-color: $gray-super-lighter;
+        top: 150px;
+        right: 0;
+      }
+    }
+  }
+  .service:last-child{
+    &:after { display: none; }
+  }
+}
+
+
+
+//Banner Animations
+.banner-inner.active {
+  .banner-lead {
+    @include animate;
+    @include animate-delay(.4s);
+    @include fadeInDown;
+  }
+  .service {
+    @include animate;
+    @include animate-delay(.8s);
+    @include fadeInDown;
+  }
+  .service + .service {
+    @include animate-delay(1.2s);
+  }
+  .service + .service + .service {
+    @include animate-delay(1.6s);
+  }
+}

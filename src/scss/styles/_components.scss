@@ -1,0 +1,43 @@
+//logo
+.illusion {
+  display: block;
+  float: left;
+  font-size: $font-size-h4;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  height: 27px;
+  margin-top: 13px;
+  padding-left: 35px;
+  background: url('img/logo.png') no-repeat left center;
+  &:hover { text-decoration: none; }
+  @include breakpoint(sm) { margin-top: 5px; }
+}
+
+//custom button
+.btn-default {
+  @include border-radius(5px);
+  border: 1px solid $gray-lighter;
+  color: $gray-dark;
+  font-size: $font-size-small - 1;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 10px 23px;
+  &:hover{
+    border-color: $gray-dark;
+    text-decoration: none;
+    background: none;
+  }
+}
+
+//custom subtitle
+.secondary-title {
+  display: block;
+  font-size: $font-size-small;
+  font-weight: 600;
+  line-height: $line-height-base + 1;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $red;
+}

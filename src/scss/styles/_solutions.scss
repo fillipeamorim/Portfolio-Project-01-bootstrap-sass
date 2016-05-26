@@ -1,0 +1,67 @@
+.other-solutions-content {
+  @include make-row();
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $semiWhite;
+  @include breakpoint(sm) { padding-top: 40px; }
+  .secondary-title { margin-bottom: 20px; }
+  .list-solutions {
+    @include make-md-column(10);
+    @include make-md-column-push(1);
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    .solution {
+      @include make-md-column(6);
+      padding-left: 60px;
+      padding-right: 0;
+      margin-bottom: 30px;
+      @include breakpoint(sm) {
+        padding-left: 70px;
+        padding-right: 20px;
+        margin-bottom: 40px;
+      }
+    }
+    .solution.money  { background: url('img/money.png') no-repeat 10px top; }
+    .solution.globe  { background: url('img/globe.png') no-repeat 10px top; }
+    .solution.spiral { background: url('img/spiral.png') no-repeat 10px top; }
+    .solution.tag    { background: url('img/tag.png') no-repeat 10px top; }
+    .solution.arrow  { background: url('img/arrow.png') no-repeat 10px top; }
+    .solution.mobile { background: url('img/mobile.png') no-repeat 22px top; }
+    @include breakpoint(sm) {
+      .solution.money  { background-position: 20px top; }
+      .solution.globe  { background-position: 20px top; }
+      .solution.spiral { background-position: 20px top; }
+      .solution.tag    { background-position: 20px top; }
+      .solution.arrow  { background-position: 20px top; }
+      .solution.mobile { background-position: 32px top; }
+    }
+    .solution h3 {
+      color: $gray;
+      font-size: $font-size-base + 3;
+      margin-bottom: 10px;
+      margin-top: 6px;
+    }
+    .solution p {
+      font-size: $font-size-base + 1;
+      line-height: $line-height-base + .2;
+      color: $gray-lighter;
+      font-weight: 100;
+    }
+  }
+}
+
+
+//Animations
+.other-solutions-content.active {
+  .solution {
+    @include animate;
+    @include fadeInDown;
+  }
+  .solution:nth-child(1) { @include animate-delay(.8s); }
+  .solution:nth-child(2) { @include animate-delay(1s); }
+  .solution:nth-child(3) { @include animate-delay(1.2s); }
+  .solution:nth-child(4) { @include animate-delay(1.4s); }
+  .solution:nth-child(5) { @include animate-delay(1.6s); }
+  .solution:nth-child(6) { @include animate-delay(1.8s); }
+}

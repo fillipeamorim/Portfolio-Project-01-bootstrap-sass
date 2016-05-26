@@ -1,0 +1,12 @@
+img { 
+	@include img-responsive();
+}
+
+a { 
+  color: $black;
+  @include transition();
+}
+
+body { 
+	font-family: "Montserrat", sans-serif;
+}
