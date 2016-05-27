@@ -2,6 +2,7 @@
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
     sass = require('gulp-sass'),
+    jade = require('gulp-jade'),
     sourcemaps = require('gulp-sourcemaps'),
     cssBase64 = require('gulp-css-base64'),
     path = require('path'),
@@ -57,6 +58,14 @@ gulp.task('styleguide', function () {
   .pipe(notify("Styleguide SCSS Compiled Successfully :)"));
 });
 
+// Task to process jade
+gulp.task('jadefy', function() {
+  return gulp.src('./src/*.jade')
+    .pipe(jade({ pretty: true }))
+    .pipe(gulp.dest('./src/'))
+    .pipe(browserSync.reload({ stream: true }));
+});
+
 // Task to Minify JS
 gulp.task('jsmin', function() {
   return gulp.src('./src/js/**/*.js')
@@ -96,6 +105,7 @@ gulp.task('inlinesource', function () {
 // Gulp Watch Task
 gulp.task('watch', ['browserSync'], function () {
    gulp.watch('./src/scss/**/*', ['sass', 'styleguide']);
+   gulp.watch('./src/**/*.jade', ['jadefy']);
    gulp.watch('./src/**/*.html').on('change', browserSync.reload);
 });
 
