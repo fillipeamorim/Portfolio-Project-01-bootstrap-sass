@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fillipeamorim/Portfolio-Project-01-bootstrap-sass.svg?branch=master)](https://travis-ci.org/fillipeamorim/Portfolio-Project-01-bootstrap-sass)
+
 # Ficticious layout for temporary portfolio
 - Created with **HTML5/CSS3/JS (Bootstrap/Sass/jQuery)**
 - Structured with **Jade**
