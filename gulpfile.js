@@ -31,46 +31,26 @@ gulp.task('sass', function () {
     .pipe(autoprefixer())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./src/'))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./'))
     .pipe(browserSync.reload({
       stream: true
     }))
     .pipe(notify("SCSS Compiled Successfully :)"));
 });
 
-gulp.task('styleguide', function () {
-  return gulp.src('./src/scss/styleguide.scss')
-  .pipe(sourcemaps.init())
-  .pipe(sass({
-    errLogToConsole: false,
-    paths: [ path.join(__dirname, 'scss', 'includes') ]
-  })
-  .on("error", notify.onError(function(error) {
-    return "Failed to Compile Styleguide SCSS: " + error.message;
-  })))
-  .pipe(cssBase64())
-  .pipe(autoprefixer())
-  .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest('./src/css/'))
-  .pipe(browserSync.reload({
-    stream: true
-  }))
-  .pipe(notify("Styleguide SCSS Compiled Successfully :)"));
-});
-
 // Task to process jade
 gulp.task('jadefy', function() {
   return gulp.src('./src/*.jade')
     .pipe(jade({ pretty: true }))
-    .pipe(gulp.dest('./src/'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({ stream: true }))
+    .pipe(gulp.dest('./src/'));
 });
 
 // Task to Minify JS
 gulp.task('jsmin', function() {
   return gulp.src('./src/js/**/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/js/'));
+    .pipe(gulp.dest('./js/'));
 });
 
 // Minify Images
@@ -80,7 +60,7 @@ gulp.task('imagemin', function (){
   .pipe(cache(imagemin({
       interlaced: true
     })))
-  .pipe(gulp.dest('./dist/img'));
+  .pipe(gulp.dest('./img'));
 });
 
 // BrowserSync Task (Live reload)
@@ -99,19 +79,23 @@ gulp.task('browserSync', function() {
 gulp.task('inlinesource', function () {
   return gulp.src('./src/**/*.html')
     .pipe(inlinesource())
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./'));
 });
 
 // Gulp Watch Task
 gulp.task('watch', ['browserSync'], function () {
-   gulp.watch('./src/scss/**/*', ['sass', 'styleguide']);
+   gulp.watch('./src/scss/**/*', ['sass']);
    gulp.watch('./src/**/*.jade', ['jadefy']);
    gulp.watch('./src/**/*.html').on('change', browserSync.reload);
 });
 
 // Gulp Clean Up Task
 gulp.task('clean', function() {
-  del('dist');
+  del('img');
+  del('js');
+  del('index.html');
+  del('style.css');
+  del('style.css.map');
 });
 
 // Gulp Default Task
@@ -119,5 +103,5 @@ gulp.task('default', ['watch']);
 
 // Gulp Build Task
 gulp.task('build', function() {
-  runSequence('clean', 'sass', 'styleguide', 'imagemin', 'jsmin', 'inlinesource');
+  runSequence('clean', 'sass', 'imagemin', 'jsmin', 'inlinesource');
 });
