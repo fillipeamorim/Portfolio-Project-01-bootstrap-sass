@@ -7,4 +7,6 @@
 - Versioned with **Git**
 - Tested with **Travis-CI**
 
+[Preview this layout](https://fillipeamorim.github.io/Portfolio-Project-01-bootstrap-sass)
+
 ![Layout](https://github.com/fillipeamorim/Portfolio-Project-01-bootstrap-sass/blob/master/src/img/layout.png)
